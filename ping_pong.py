@@ -5,8 +5,12 @@ from pygame import *
 # H - height, высота
 WIN_W = 700
 WIN_H = 500
-BALL_X = 150
-BALL_Y = 100
+BALL_X = 120
+BALL_Y = 85
+RACKET_ONEX = 150
+RACKET_ONEY = 150
+RACKET_TWOX = 127
+RACKET_TWOY = 150
 
 
 
@@ -31,12 +35,30 @@ ball = transform.scale(
 )
 
 
+racket1 = transform.scale(
+    image.load('player1.png'),
+    # здесь - размеры картинки
+    (RACKET_ONEX, RACKET_ONEY)
+)
+
+
+racket2 = transform.scale(
+    image.load('player2.png'),
+    # здесь - размеры картинки
+    (RACKET_TWOX, RACKET_TWOY)
+)
+
+
+
 # игровой цикл
 game = True
 while game:
     # отобразить картинку фона
     window.blit(background,(0, 0))
-    window.blit(ball,(100, 100))
+    window.blit(ball,(290, 205))
+    window.blit(racket1,(0, 150))
+    window.blit(racket2,(550, 150))
+
     # слушать события и обрабатывать
     for e in event.get():
         # выйти, если нажат "крестик"
@@ -44,3 +66,5 @@ while game:
             game = False
     # обновить экран, чтобы отобрзить все изменения
     display.update()
+
+
